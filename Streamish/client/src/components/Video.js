@@ -11,19 +11,22 @@ const Video = ({ video }) => {
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen />
+                    allowFullScreen
+                />
 
                 <p>
                     <strong>{video.title}</strong>
                 </p>
                 <p>{video.description}</p>
                 <div>
-                    <h4>Comments for Devin</h4>
+                    <h4>Video Comments</h4>
+
                     {video.comments.map((comment) => {
                         return (
-                            <div key={comment.Id}>{comment.message}</div>
+                            <div key={comment.id}> {comment.message}</div>
                         )
                     })}
+
 
                 </div>
             </CardBody>
