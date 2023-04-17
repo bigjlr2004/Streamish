@@ -1,13 +1,17 @@
 import React from "react";
+import { BrowserRouter, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
-import VideoList from "./components/VideoList";
-import { SearchForm } from "./components/SearchForm";
-import { StateManager } from "./components/StateManager";
+import ApplicationViews from "./components/ApplicationViews";
+import Header from "./components/Header";
+
 
 function App() {
   return (
     <div className="App">
-      <StateManager />
+      <BrowserRouter>
+        <Header />
+        <ApplicationViews />
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import { Card, CardBody } from "reactstrap";
-import { addVideo, getAllVideos } from "../modules/videoManager";
+import { addVideo } from "../modules/videoManager";
+import { useNavigate } from 'react-router-dom'
 
-export const VideoForm = ({ getVideos }) => {
+const VideoForm = () => {
+    const navigate = useNavigate();
     const [video, setUserVideo] = useState({
         title: "",
         description: "",
@@ -14,7 +16,13 @@ export const VideoForm = ({ getVideos }) => {
         if (video.url && video.title) {
             addVideo(video)
                 .then(() => {
-                    getVideos();
+                    const copy = { ...video };
+                    copy.title = "";
+                    copy.description = "";
+                    copy.url = "";
+                    setUserVideo(copy);
+                    navigate('/')
+
 
                 });
         }
@@ -35,6 +43,7 @@ export const VideoForm = ({ getVideos }) => {
                                 required
                                 id="Title"
                                 type="text"
+                                value={video.title}
                                 className="form-control"
                                 placeholder="Video Title"
 
@@ -51,6 +60,7 @@ export const VideoForm = ({ getVideos }) => {
                             <input
                                 required
                                 id="Description"
+                                value={video.description}
                                 type="text"
                                 className="form-control"
                                 placeholder="Video Description"
@@ -67,6 +77,7 @@ export const VideoForm = ({ getVideos }) => {
                             <label htmlFor="Url">Video Url: </label>
                             <input
                                 required
+                                value={video.url}
                                 id="Url"
                                 type="text"
                                 className="form-control"
@@ -91,3 +102,4 @@ export const VideoForm = ({ getVideos }) => {
     )
 }
 
+export default VideoForm;
