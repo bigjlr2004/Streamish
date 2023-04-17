@@ -19,3 +19,6 @@ export const searchVideos = (criterion, sort = "") => {
     return fetch(`${baseUrl}search?q=${criterion}&sortDesc=${sort}`)
         .then((res) => res.json())
 };
+export const getVideo = (id) => {
+    return fetch(`${baseUrl}GetByIdWithComment/${id}`).then((res) => res.json());
+};

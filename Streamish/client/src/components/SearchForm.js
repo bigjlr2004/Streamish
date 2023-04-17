@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { searchVideos } from "../modules/videoManager";
 import { Card, CardBody } from "reactstrap";
 export const SearchForm = ({ setVideos }) => {
